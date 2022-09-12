@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DessertCategoryTableViewController: UITableViewController {
 
     var dessertArr = [DessertData]()
+    var img: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,10 @@ class DessertCategoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dessertCell", for: indexPath)
         cell.textLabel?.text = dessertArr[indexPath.row].strMeal
+        
         let imageUrl = dessertArr[indexPath.row].strMealThumb
-        cell.imageView?.loadFrom(URLAddress: imageUrl)
+        cell.imageView?.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(systemName: "photo"), options:.continueInBackground, completed: nil)
+
         
         return cell
     }
@@ -59,21 +63,21 @@ class DessertCategoryTableViewController: UITableViewController {
 }
 
 //load image from URL string
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        image = nil
-        guard let url = URL(string: URLAddress) else {
-            return
-        }
-
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                        self?.image = loadedImage
-                }
-            }
-        }
-    }
-}
+//extension UIImageView {
+//    func loadFrom(URLAddress: String) {
+//        image = nil
+//        guard let url = URL(string: URLAddress) else {
+//            return
+//        }
+//
+//        DispatchQueue.main.async { [weak self] in
+//            if let imageData = try? Data(contentsOf: url) {
+//                if let loadedImage = UIImage(data: imageData) {
+//                        self?.image = loadedImage
+//                }
+//            }
+//        }
+//    }
+//}
 
 
