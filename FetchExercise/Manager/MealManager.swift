@@ -48,13 +48,27 @@ class MealManager{
                 //convert decodedMeal Object to a dictionary
                 let dictData = decodedMeal.meals[0].dictionary
                 
-                //convert the valued of srtIngredients and srtMeasures into arrays of String
-                let ingredients = dictData.filter{$0.key.contains("strIngredient")}.array
-                let measures = dictData.filter{$0.key.contains("strMeasure")}.array
+                //filter out the ingredient and measure into seperated dictionaries
+                let ingredientDict = dictData.filter{$0.key.contains("strIngredient")}
+                let measureDict = dictData.filter{$0.key.contains("strMeasure")}
                 
-                let mealDetail = MealDetails(strMeal: mealName, strInstructions: instruction, strIngredient: ingredients, strMeasure: measures)
+                //create object index
+                let strIngredient = "strIngredientxx"
+                let idxIngredient = strIngredient.index(strIngredient.startIndex, offsetBy: 13)
+                let strMeasure = "strMeasurexx"
+                let idxMeasure = strMeasure.index(strMeasure.startIndex, offsetBy: 10)
+                
+                //sort value of ingredient/measure dictionary into an array
+                let ingredientArr = ingredientDict.sorted(by: {
+                    Int($0.0[idxIngredient...])! < Int($1.0[idxIngredient...])!
+                }).map({$0.1}).filter({$0 != "" && $0.first != " "})
+                let measureArr = measureDict.sorted(by: {
+                    Int($0.0[idxMeasure...])! < Int($1.0[idxMeasure...])!
+                }).map({$0.1}).filter({$0 != "" && $0.first != " "})
+                
+                //create mealDetail Object
+                let mealDetail = MealDetails(strMeal: mealName, strInstructions: instruction, strIngredient: ingredientArr, strMeasure: measureArr)
                 completed(mealDetail, nil)
-//                self.delegate?.didGetMeal(meal: mealDetail)
             }catch{
                 completed(nil, .invalidData)
             }
@@ -65,11 +79,6 @@ class MealManager{
 extension Encodable {
     var dictionary: [String: String] {
         return (try? JSONSerialization.jsonObject(with: JSONEncoder().encode(self))) as? [String: String] ?? [:]
-    }
-    var array: [String] {
-        return dictionary
-            .map { ($1) }    //convert values array
-            .filter{ $0 != ""}  //filter out empty and nill values
     }
 }
 

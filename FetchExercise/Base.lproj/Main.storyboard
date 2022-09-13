@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vM2-MQ-4jS" userLabel="SecondView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="254"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="234"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiF-2X-WxW">
                                                 <rect key="frame" x="50" y="40" width="314" height="30"/>
@@ -34,42 +34,96 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="instruction" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Y3-l2-nYl">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="instruction" textAlignment="justified" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Y3-l2-nYl" userLabel="InstructionTV">
                                                 <rect key="frame" x="20" y="119" width="374" height="33"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Che-Bs-oge" userLabel="Ingredient">
-                                                <rect key="frame" x="20" y="172" width="99.5" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="ingredient" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GLE-FU-pb7">
-                                                <rect key="frame" x="20" y="201" width="75.5" height="33"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-OC-dYE">
+                                                <rect key="frame" x="20" y="172" width="374" height="62"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SPf-S7-8fx" userLabel="ingredientSV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="62"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Che-Bs-oge" userLabel="Ingredient">
+                                                                <rect key="frame" x="0.0" y="0.0" width="200" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="ingredient" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GLE-FU-pb7" userLabel="IngredientTV">
+                                                                <rect key="frame" x="0.0" y="29" width="200" height="33"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            </textView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="GLE-FU-pb7" firstAttribute="leading" secondItem="SPf-S7-8fx" secondAttribute="leading" id="2qM-7v-Ujz"/>
+                                                            <constraint firstItem="Che-Bs-oge" firstAttribute="top" secondItem="SPf-S7-8fx" secondAttribute="top" id="IuR-3T-kZ1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Che-Bs-oge" secondAttribute="trailing" id="e0V-ex-w2D"/>
+                                                            <constraint firstAttribute="trailing" secondItem="GLE-FU-pb7" secondAttribute="trailing" id="lti-qp-XYL"/>
+                                                            <constraint firstAttribute="bottom" secondItem="GLE-FU-pb7" secondAttribute="bottom" id="pGc-Vq-rbH"/>
+                                                            <constraint firstItem="Che-Bs-oge" firstAttribute="width" secondItem="SPf-S7-8fx" secondAttribute="width" id="usm-pE-EWa"/>
+                                                            <constraint firstItem="Che-Bs-oge" firstAttribute="leading" secondItem="SPf-S7-8fx" secondAttribute="leading" id="vVF-pB-Dnw"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g5m-eT-pTY" userLabel="measureSV">
+                                                        <rect key="frame" x="205" y="0.0" width="169" height="62"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Measure:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1L5-Z6-HRw" userLabel="Measure">
+                                                                <rect key="frame" x="0.0" y="0.0" width="169" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="measure" textAlignment="right" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mnF-aV-BAB" userLabel="MeasureTV">
+                                                                <rect key="frame" x="0.0" y="29" width="169" height="33"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            </textView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="1L5-Z6-HRw" secondAttribute="trailing" id="0m0-HQ-qiR"/>
+                                                            <constraint firstItem="1L5-Z6-HRw" firstAttribute="leading" secondItem="g5m-eT-pTY" secondAttribute="leading" id="1GW-7l-1L6"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mnF-aV-BAB" secondAttribute="trailing" id="2Nb-Jc-RLg"/>
+                                                            <constraint firstItem="mnF-aV-BAB" firstAttribute="top" secondItem="1L5-Z6-HRw" secondAttribute="bottom" constant="5" id="4iH-6p-Qig"/>
+                                                            <constraint firstItem="1L5-Z6-HRw" firstAttribute="top" secondItem="g5m-eT-pTY" secondAttribute="top" id="CLm-mu-80e"/>
+                                                            <constraint firstItem="mnF-aV-BAB" firstAttribute="leading" secondItem="g5m-eT-pTY" secondAttribute="leading" id="QlZ-Do-hcQ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="mnF-aV-BAB" secondAttribute="bottom" id="wRj-rQ-t5g"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="SPf-S7-8fx" firstAttribute="leading" secondItem="ozX-OC-dYE" secondAttribute="leading" id="0eC-VZ-RIE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="g5m-eT-pTY" secondAttribute="trailing" id="3D7-i8-NnD"/>
+                                                    <constraint firstItem="g5m-eT-pTY" firstAttribute="leading" secondItem="SPf-S7-8fx" secondAttribute="trailing" constant="5" id="LLl-pP-tj4"/>
+                                                    <constraint firstItem="SPf-S7-8fx" firstAttribute="top" secondItem="ozX-OC-dYE" secondAttribute="top" id="bKg-ar-tFq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="SPf-S7-8fx" secondAttribute="bottom" id="h1w-GC-SL7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="g5m-eT-pTY" secondAttribute="bottom" id="nyc-k4-x98"/>
+                                                    <constraint firstItem="g5m-eT-pTY" firstAttribute="top" secondItem="ozX-OC-dYE" secondAttribute="top" id="ueQ-y8-xQ5"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="ozX-OC-dYE" firstAttribute="leading" secondItem="vM2-MQ-4jS" secondAttribute="leading" constant="20" id="00G-fM-m6D"/>
                                             <constraint firstItem="yiF-2X-WxW" firstAttribute="top" secondItem="vM2-MQ-4jS" secondAttribute="top" constant="40" id="3Oh-5F-KfQ"/>
                                             <constraint firstItem="yiF-2X-WxW" firstAttribute="leading" secondItem="vM2-MQ-4jS" secondAttribute="leading" constant="50" id="4mO-XU-JaC"/>
                                             <constraint firstAttribute="trailing" secondItem="yiF-2X-WxW" secondAttribute="trailing" constant="50" id="9lB-vs-zUv"/>
-                                            <constraint firstItem="Che-Bs-oge" firstAttribute="top" secondItem="8Y3-l2-nYl" secondAttribute="bottom" constant="20" id="FTi-Uw-tgb"/>
-                                            <constraint firstItem="Che-Bs-oge" firstAttribute="leading" secondItem="vM2-MQ-4jS" secondAttribute="leading" constant="20" id="G4H-ol-R5G"/>
                                             <constraint firstItem="A37-yw-KCB" firstAttribute="leading" secondItem="vM2-MQ-4jS" secondAttribute="leading" constant="20" id="K6i-Sw-dRx"/>
                                             <constraint firstItem="8Y3-l2-nYl" firstAttribute="leading" secondItem="vM2-MQ-4jS" secondAttribute="leading" constant="20" id="Ql8-eC-fj7"/>
-                                            <constraint firstItem="GLE-FU-pb7" firstAttribute="leading" secondItem="vM2-MQ-4jS" secondAttribute="leading" constant="20" id="SNz-vf-vyw"/>
                                             <constraint firstItem="A37-yw-KCB" firstAttribute="top" secondItem="yiF-2X-WxW" secondAttribute="bottom" constant="20" id="afW-Aw-MKf"/>
+                                            <constraint firstAttribute="trailing" secondItem="ozX-OC-dYE" secondAttribute="trailing" constant="20" id="cx8-7v-CDO"/>
+                                            <constraint firstItem="ozX-OC-dYE" firstAttribute="top" secondItem="8Y3-l2-nYl" secondAttribute="bottom" constant="20" id="dDV-es-fBA"/>
                                             <constraint firstAttribute="trailing" secondItem="8Y3-l2-nYl" secondAttribute="trailing" constant="20" id="fOE-7U-ZXM"/>
                                             <constraint firstItem="8Y3-l2-nYl" firstAttribute="top" secondItem="A37-yw-KCB" secondAttribute="bottom" constant="5" id="jNF-iS-GTt"/>
-                                            <constraint firstItem="GLE-FU-pb7" firstAttribute="top" secondItem="Che-Bs-oge" secondAttribute="bottom" constant="5" id="tUW-3H-EYh"/>
-                                            <constraint firstAttribute="bottom" secondItem="GLE-FU-pb7" secondAttribute="bottom" constant="20" id="tac-wP-YaR"/>
+                                            <constraint firstAttribute="bottom" secondItem="ozX-OC-dYE" secondAttribute="bottom" id="kFy-qq-eVw"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -96,8 +150,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="wBd-Aa-TMw"/>
                     <connections>
-                        <outlet property="ingredientTF" destination="GLE-FU-pb7" id="WCG-ut-E4C"/>
+                        <outlet property="ingredientTV" destination="GLE-FU-pb7" id="WCG-ut-E4C"/>
                         <outlet property="mealName" destination="yiF-2X-WxW" id="rj5-Hy-Ghs"/>
+                        <outlet property="measureTV" destination="mnF-aV-BAB" id="7gL-hH-03h"/>
                         <outlet property="textView" destination="8Y3-l2-nYl" id="y5A-pQ-Z7i"/>
                     </connections>
                 </viewController>

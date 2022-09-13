@@ -11,19 +11,17 @@ class MealDetailViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var mealName: UILabel!
-    @IBOutlet weak var ingredientTF: UITextView!
-    
+    @IBOutlet weak var ingredientTV: UITextView!
+    @IBOutlet weak var measureTV: UITextView!
     
     var mealId: String?
-//    var testTV: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchMeal(mealId)
-        
+        loadMeal(mealId)
         }
     
-    func fetchMeal(_ mealId: String?){
+    func loadMeal(_ mealId: String?){
         guard let id = mealId else {
             return
         }
@@ -36,7 +34,8 @@ class MealDetailViewController: UIViewController {
             DispatchQueue.main.async {
                 textView.text = meal.strInstructions
                 mealName.text = meal.strMeal
-                ingredientTF.text = meal.strIngredient.joined(separator: "\n")
+                ingredientTV.text = meal.strIngredient.joined(separator: "\n")
+                measureTV.text = meal.strMeasure.joined(separator: "\n")
             }
         }
     

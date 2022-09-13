@@ -11,5 +11,4 @@ struct MealDetails{
     var strInstructions: String
     var strIngredient: [String]
     var strMeasure: [String]
-
 }
